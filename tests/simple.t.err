@@ -1,0 +1,44 @@
+Without the plugin:
+
+  $ pylint --rcfile=$TESTDIR/pylint.rc --errors-only simple
+  ************* Module simple
+  simple:11: [E1101(no-member), ] Instance of 'MyContainer' has no 'a' member
+  simple:13: [E1101(no-member), ] Instance of 'MyContainer' has no 'missing' member
+  simple:25: [E1101(no-member), ] Instance of 'MyContainer2' has no 'a' member
+  simple:27: [E1101(no-member), ] Instance of 'MyContainer2' has no 'missing' member
+  simple:38: [E1101(no-member), ] Instance of 'MyContainer3' has no 'a' member
+  simple:40: [E1101(no-member), ] Instance of 'MyContainer3' has no 'missing' member
+  simple:51: [E1101(no-member), ] Instance of 'MyContainer4' has no 'a' member
+  simple:53: [E1101(no-member), ] Instance of 'MyContainer4' has no 'missing' member
+  [2]
+
+With the plugin:
+
+  $ pylint --rcfile=$TESTDIR/simple.rc --errors-only simple
+  Plugin registerd !
+  Getattr(d) {'lineno': 4, 'tolineno': 4, 'fromlineno': 4, 'attrname': 'd', 'expr': <Getattr(c) l.4 [simple] at 0x7f2f7cbc96d8>, 'col_offset': 38, 'parent': <Class(MyContainer) l.4 [simple] at 0x7f2f7cbc9630>}
+  Getattr(c) {'lineno': 4, 'tolineno': 4, 'fromlineno': 4, 'attrname': 'c', 'expr': <Getattr(b) l.4 [simple] at 0x7f2f7cbc9710>, 'col_offset': 36, 'parent': <Getattr(d) l.4 [simple] at 0x7f2f7cbc96a0>}
+  Getattr(b) {'lineno': 4, 'tolineno': 4, 'fromlineno': 4, 'attrname': 'b', 'expr': <Getattr(a) l.4 [simple] at 0x7f2f7cbc9748>, 'col_offset': 34, 'parent': <Getattr(c) l.4 [simple] at 0x7f2f7cbc96d8>}
+  Getattr(a) {'lineno': 4, 'tolineno': 4, 'fromlineno': 4, 'attrname': 'a', 'expr': <Getattr(Fields) l.4 [simple] at 0x7f2f7cbc9780>, 'col_offset': 32, 'parent': <Getattr(b) l.4 [simple] at 0x7f2f7cbc9710>}
+  Getattr(Fields) {'lineno': 4, 'tolineno': 4, 'fromlineno': 4, 'attrname': 'Fields', 'expr': <Name(fields) l.4 [simple] at 0x7f2f7cbc97b8>, 'col_offset': 25, 'parent': <Getattr(a) l.4 [simple] at 0x7f2f7cbc9748>}
+  Name(fields) {'fromlineno': 4, 'tolineno': 4, 'lineno': 4, 'col_offset': 18, 'parent': <Getattr(Fields) l.4 [simple] at 0x7f2f7cbc9780>, 'name': 'fields'}
+  Getattr(d) {'lineno': 18, 'tolineno': 18, 'fromlineno': 18, 'attrname': 'd', 'expr': <Getattr(c) l.18 [simple] at 0x7f2f7cbd7fd0>, 'col_offset': 32, 'parent': <Class(MyContainer2) l.18 [simple] at 0x7f2f7cbd7f28>}
+  Getattr(c) {'lineno': 18, 'tolineno': 18, 'fromlineno': 18, 'attrname': 'c', 'expr': <Getattr(b) l.18 [simple] at 0x7f2f7cbe3048>, 'col_offset': 30, 'parent': <Getattr(d) l.18 [simple] at 0x7f2f7cbd7f98>}
+  Getattr(b) {'lineno': 18, 'tolineno': 18, 'fromlineno': 18, 'attrname': 'b', 'expr': <Getattr(a) l.18 [simple] at 0x7f2f7cbe3080>, 'col_offset': 28, 'parent': <Getattr(c) l.18 [simple] at 0x7f2f7cbd7fd0>}
+  Getattr(a) {'lineno': 18, 'tolineno': 18, 'fromlineno': 18, 'attrname': 'a', 'expr': <Name(Fields) l.18 [simple] at 0x7f2f7cbe30b8>, 'col_offset': 26, 'parent': <Getattr(b) l.18 [simple] at 0x7f2f7cbe3048>}
+  Name(Fields) {'fromlineno': 18, 'tolineno': 18, 'lineno': 18, 'col_offset': 19, 'parent': <Getattr(a) l.18 [simple] at 0x7f2f7cbe3080>, 'name': 'Fields'}
+  Subscript() {'lineno': 30, 'tolineno': 30, 'value': <Getattr(d) l.30 [simple] at 0x7f2f7cbe3668>, 'fromlineno': 30, 'col_offset': 44, 'parent': <Class(MyContainer3) l.30 [simple] at 0x7f2f7cbe3550>, 'slice': <Index() l.30 [simple] at 0x7f2f7cbe3860>}
+  Subscript() {'lineno': 43, 'tolineno': 43, 'value': <Getattr(d) l.43 [simple] at 0x7f2f7cbe3dd8>, 'fromlineno': 43, 'col_offset': 37, 'parent': <Class(MyContainer4) l.43 [simple] at 0x7f2f7cbe3cc0>, 'slice': <Index() l.43 [simple] at 0x7f2f7cbe3f98>}
+  Name(object) {'fromlineno': 27, 'tolineno': 27, 'lineno': 27, 'col_offset': 15, 'parent': <Class(__base__) l.27 [fields] at 0x7f2f7cb58a20>, 'name': 'object'}
+  Name(__base__) {'fromlineno': 63, 'tolineno': 63, 'lineno': 63, 'col_offset': 21, 'parent': <Class(FieldsBase) l.63 [fields] at 0x7f2f7cb6a550>, 'name': '__base__'}
+  Name(object) {'fromlineno': 143, 'tolineno': 143, 'lineno': 143, 'col_offset': 15, 'parent': <Class(Callable) l.143 [fields] at 0x7f2f7cb43fd0>, 'name': 'object'}
+  Name(type) {'fromlineno': 161, 'tolineno': 161, 'lineno': 161, 'col_offset': 14, 'parent': <Class(Factory) l.161 [fields] at 0x7f2f7cb482b0>, 'name': 'type'}
+  Name(object) {'fromlineno': 263, 'tolineno': 263, 'lineno': 263, 'col_offset': 16, 'parent': <Class(Namespace) l.263 [fields] at 0x7f2f7cb48978>, 'name': 'object'}
+  ************* Module simple
+  E: 13,11: Instance of 'MyContainer' has no 'missing' member (no-member)
+  E: 27,11: Instance of 'MyContainer2' has no 'missing' member (no-member)
+  E: 38,11: Instance of 'MyContainer3' has no 'a' member (no-member)
+  E: 40,11: Instance of 'MyContainer3' has no 'missing' member (no-member)
+  E: 51,11: Instance of 'MyContainer4' has no 'a' member (no-member)
+  E: 53,11: Instance of 'MyContainer4' has no 'missing' member (no-member)
+  [2]
