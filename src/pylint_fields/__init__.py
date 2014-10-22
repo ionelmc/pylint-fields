@@ -7,14 +7,15 @@ def register(linter):
 
 from astroid import Getattr
 from astroid import MANAGER
-from astroid import Name
+from astroid import Name, Subscript
 from astroid import scoped_nodes
 from astroid.builder import AstroidBuilder
 
 def dive(obj, stack=()):
-    print(obj, vars(obj))
     if isinstance(obj, Getattr):
         return dive(obj.expr, (obj.attrname, ) + stack)
+    elif isinstance(obj, Subscript):
+        return dive(obj.value, stack)
     elif isinstance(obj, Name):
         if obj.name == 'fields':
             if stack and stack[0] == 'Fields':
