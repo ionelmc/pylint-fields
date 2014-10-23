@@ -1,6 +1,5 @@
-[MASTER]
-load-plugins=pylint_fields
 [REPORTS]
 output-format=text
 reports=no
 msg-template={module}:{line:>02}:{msg_id}: {msg:<70} | {symbol}
+
