@@ -1,5 +1,6 @@
 [MASTER]
 load-plugins=pylint_fields
+
 [REPORTS]
 output-format=text
 reports=no

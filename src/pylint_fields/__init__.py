@@ -1,4 +1,4 @@
-__version__ = "0.1.0"
+from __future__ import print_function
 
 from astroid import Getattr
 from astroid import MANAGER
@@ -7,9 +7,11 @@ from astroid import scoped_nodes
 from astroid import Subscript
 from astroid.builder import AstroidBuilder
 
+__version__ = "0.1.0"
+
 
 def register(linter):
-    pass
+    MANAGER.register_transform(scoped_nodes.Class, transform)
 
 
 def dive(obj, stack=(), required=()):
@@ -43,4 +45,3 @@ def transform(cls):
 
 
 PlaceholderObject = AstroidBuilder(MANAGER).string_build('object')
-MANAGER.register_transform(scoped_nodes.Class, transform)

@@ -1,3 +1,0 @@
-With the plugin:
-
-  $ pylint --rcfile=$TESTDIR/simple.rc --errors-only simple
