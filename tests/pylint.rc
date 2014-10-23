@@ -1,5 +1,3 @@
 [REPORTS]
 output-format=text
 reports=no
-msg-template={module}:{line}: [{msg_id}({symbol}), {obj}] {msg}
-
