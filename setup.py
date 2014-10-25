@@ -21,7 +21,7 @@ setup(
     name="pylint-fields",
     version="0.2.0",
     license="BSD",
-    description="An example package. Replace this with a proper project description. Generated with https://github.com/ionelmc/cookiecutter-pylibrary",
+    description="A pylint plugin for https://github.com/ionelmc/python-fields",
     long_description="%s\n%s" % (read("README.rst"), re.sub(":obj:`~?(.*?)`", r"``\1``", read("CHANGELOG.rst"))),
     author="Ionel Cristian Mărieș",
     author_email="contact@ionelmc.ro",
