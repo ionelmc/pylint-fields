@@ -30,7 +30,9 @@ pylint-fields
     :target: https://readthedocs.org/projects/pylint-fields
     :alt: Documentation Status
 
-An example package. Replace this with a proper project description. Generated with https://github.com/ionelmc/cookiecutter-pylibrary
+A pylint plugin for `python-fields <https://github.com/ionelmc/python-fields>`_. It makes pylint
+understand what fields are going to be present in the resulting class and what fields are required
+by the default __init__ method.
 
 * Free software: BSD license
 
