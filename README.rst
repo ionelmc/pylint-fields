@@ -41,6 +41,15 @@ Installation
 
     pip install pylint-fields
 
+Usage
+=====
+
+Add this to your pylint conf::
+
+    [MASTER]
+    load-plugins=pylint_fields
+
+
 Documentation
 =============
 
