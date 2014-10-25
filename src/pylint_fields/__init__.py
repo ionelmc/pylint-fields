@@ -7,7 +7,7 @@ from astroid import scoped_nodes
 from astroid import Subscript
 from astroid.builder import AstroidBuilder
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 
 def register(linter):
