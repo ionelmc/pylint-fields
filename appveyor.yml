@@ -3,7 +3,9 @@ environment:
   matrix:
     - TOXENV: check
     - TOXENV: "2.7-1.3"
+    - TOXENV: "2.7-1.4"
     - TOXENV: "3.4-1.3"
+    - TOXENV: "3.4-1.4"
 init:
   - "ECHO %TOXENV%"
   - ps: "ls C:\\Python*"
