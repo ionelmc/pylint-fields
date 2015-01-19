@@ -1,6 +1,6 @@
 graft docs
 graft examples
-graft conf
+graft ci
 graft src
 graft tests
 
