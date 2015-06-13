@@ -11,6 +11,7 @@ __version__ = "0.2.0"
 
 CLASS_NAMES = 'Fields', 'ConvertibleFields', 'SlotsFields', 'BareFields', 'Tuple'
 
+
 def register(linter):
     MANAGER.register_transform(scoped_nodes.Class, transform)
 
