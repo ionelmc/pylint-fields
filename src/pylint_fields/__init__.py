@@ -9,6 +9,7 @@ from astroid.builder import AstroidBuilder
 
 __version__ = "0.2.0"
 
+CLASS_NAMES = 'Fields', 'ConvertibleFields', 'SlotsFields', 'BareFields', 'Tuple'
 
 def register(linter):
     MANAGER.register_transform(scoped_nodes.Class, transform)
@@ -25,9 +26,9 @@ def dive(obj, stack=(), required=()):
         return dive(obj.value, stack)
     elif isinstance(obj, Name):
         if obj.name == 'fields':
-            if stack and stack[0] == 'Fields':
-                return stack[1:], required[1:] if required and required[0] == 'Fields' else required
-        elif obj.name == 'Fields':
+            if stack and stack[0] in CLASS_NAMES:
+                return stack[1:], required[1:] if required and required[0] in CLASS_NAMES else required
+        elif obj.name in CLASS_NAMES:
             return stack, required
     return (), ()
 
